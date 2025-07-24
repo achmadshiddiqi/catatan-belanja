@@ -21,17 +21,21 @@ export default function List({
 
   if (searchedItem) {
     sortedItems = searchedItem;
+  } else if (sortBy === "name") {
+    sortedItems = items.slice().sort((a, b) => a.name.localeCompare(b.name));
+  } else if (sortBy === "checked") {
+    sortedItems = items.slice().sort((a, b) => a.checked - b.checked);
   } else {
     sortedItems = items;
   }
 
-  if (sortBy === "name") {
-    sortedItems = items.slice().sort((a, b) => a.name.localeCompare(b.name));
-  }
+  // if (sortBy === "name") {
+  //   sortedItems = items.slice().sort((a, b) => a.name.localeCompare(b.name));
+  // }
 
-  if (sortBy === "checked") {
-    sortedItems = items.slice().sort((a, b) => a.checked - b.checked);
-  }
+  // if (sortBy === "checked") {
+  //   sortedItems = items.slice().sort((a, b) => a.checked - b.checked);
+  // }
 
   // function handleSearch(e) {
   //   const search = items.filter(
